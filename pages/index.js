@@ -1,6 +1,6 @@
 // pages/index.js
 import React, { useEffect, useState } from 'react';
-import { fetchData } from '../lib/api';
+//import { fetchData } from '../lib/api';
 import Header from '../components/Header';
 
 const Home = () => {
