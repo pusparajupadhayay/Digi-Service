@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const HeaderContainer = styled.header`
-  background-color: #333;
+  background-color: #ce181e;
   color: #fff;
   padding: 10px 20px;
 `;
@@ -55,9 +55,7 @@ const Header = () => {
                 <NavToggle onClick={() => setIsMenuOpen((prev) => !prev)}>☰</NavToggle>
                 <NavList isMenuOpen={isMenuOpen}>
                     <NavItem><Link href="/">Home</Link></NavItem>
-                    <NavItem><Link href="/about">About</Link></NavItem>
-                    <NavItem><Link href="/services">Services</Link></NavItem>
-                    <NavItem><Link href="/contact">Contact</Link></NavItem>
+
                 </NavList>
             </nav>
         </HeaderContainer>

@@ -6,13 +6,7 @@ import Header from '../components/Header';
 const Home = () => {
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    const getData = async () => {
-      const result = await fetchData('home-data');
-      setData(result);
-    };
-    getData();
-  }, []);
+
 
   return (
     <div>
