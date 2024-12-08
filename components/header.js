@@ -5,10 +5,14 @@ import Link from 'next/link';
 const HeaderContainer = styled.header`
     background-color: #ce181e;
     color: #fff;
-    padding: 10px 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 10px;
+    padding-right: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: -10px -10px -1px -10px;
 `;
 
 const NavList = styled.ul`
@@ -21,13 +25,10 @@ const NavList = styled.ul`
     @media (max-width: 768px) {
         flex-direction: column;
         align-items: center;
-        display: none; // Default to not showing the menu on mobile
-
-        ${(props) =>
-                props.isOpen &&
-                css`
-                    display: flex; // Display the menu when it's open
-                `}
+        display: none;
+        ${({ isMenuOpen }) => isMenuOpen && css`
+            display: flex;
+        `}
     }
 `;
 
@@ -46,12 +47,12 @@ const NavItem = styled.li`
 `;
 
 const Logo = styled.img`
-    width: 100px;
-    height: 50Px;
-    transition: transform 0.3s ease;
+    width: 200px;
+    height: 40px;
+    transition: transform 0.5s ease;
 
     &:hover {
-        transform: scale(1.1); // Slightly enlarges the logo on hover
+        transform: scale(2.2);
     }
 `;
 
@@ -71,14 +72,20 @@ const NavToggle = styled.button`
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <HeaderContainer>
-            <Logo src="/logo.jpg" alt="Logo" />
+            <Logo src="/logo.png" alt="Logo" />
+            <NavToggle onClick={toggleMenu}>
+                ☰
+            </NavToggle>
             <nav>
-                 <NavList>
+                <NavList isMenuOpen={isMenuOpen}>
                     <NavItem><Link href="/">Home</Link></NavItem>
                     <NavItem><Link href="/product">Product</Link></NavItem>
-
                 </NavList>
             </nav>
         </HeaderContainer>

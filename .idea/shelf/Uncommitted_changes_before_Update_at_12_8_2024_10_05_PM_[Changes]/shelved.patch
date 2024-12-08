@@ -1,0 +1,112 @@
+Index: components/header.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import styled, { css } from 'styled-components';\r\nimport { useState } from 'react';\r\nimport Link from 'next/link';\r\n\r\nconst HeaderContainer = styled.header`\r\n    background-color: #ce181e;\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n`;\r\n\r\nconst NavList = styled.ul`\r\n    display: flex;\r\n    justify-content: space-between;\r\n    list-style: none;\r\n    padding: 0;\r\n    margin: 0;\r\n\r\n    @media (max-width: 768px) {\r\n        flex-direction: column;\r\n        align-items: center;\r\n        display: none; // Default to not showing the menu on mobile\r\n\r\n        ${(props) =>\r\n                props.isOpen &&\r\n                css`\r\n                    display: flex; // Display the menu when it's open\r\n                `}\r\n    }\r\n`;\r\n\r\nconst NavItem = styled.li`\r\n    margin: 0 10px;\r\n\r\n    a {\r\n        color: #fff;\r\n        text-decoration: none;\r\n        font-size: 18px;\r\n    }\r\n\r\n    a:hover {\r\n        text-decoration: underline;\r\n    }\r\n`;\r\n\r\nconst Logo = styled.img`\r\n    width: 100px;\r\n    height: 50Px;\r\n    transition: transform 0.3s ease;\r\n\r\n    &:hover {\r\n        transform: scale(1.1); // Slightly enlarges the logo on hover\r\n    }\r\n`;\r\n\r\nconst NavToggle = styled.button`\r\n    display: none;\r\n    font-size: 24px;\r\n    cursor: pointer;\r\n    background: none;\r\n    border: none;\r\n    color: #fff;\r\n\r\n    @media (max-width: 768px) {\r\n        display: block;\r\n    }\r\n`;\r\n\r\nconst Header = () => {\r\n    const [isMenuOpen, setIsMenuOpen] = useState(false);\r\n\r\n    return (\r\n        <HeaderContainer>\r\n            <Logo src=\"/logo.jpg\" alt=\"Logo\" />\r\n            <nav>\r\n                 <NavList>\r\n                    <NavItem><Link href=\"/\">Home</Link></NavItem>\r\n                    <NavItem><Link href=\"/product\">Product</Link></NavItem>\r\n\r\n                </NavList>\r\n            </nav>\r\n        </HeaderContainer>\r\n    );\r\n};\r\n\r\nexport default Header;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/header.js b/components/header.js
+--- a/components/header.js	(revision 00940a89299bb3620873184e6ee91ad1211af205)
++++ b/components/header.js	(date 1733674807483)
+@@ -5,7 +5,10 @@
+ const HeaderContainer = styled.header`
+     background-color: #ce181e;
+     color: #fff;
+-    padding: 10px 20px;
++    padding-top: 20px;
++    padding-bottom: 20px;
++    padding-left: 10px;
++    padding-right: 100px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+@@ -47,11 +50,11 @@
+ 
+ const Logo = styled.img`
+     width: 100px;
+-    height: 50Px;
+-    transition: transform 0.3s ease;
++    height: 40px;
++    transition: transform 0.5s ease;
+ 
+     &:hover {
+-        transform: scale(1.1); // Slightly enlarges the logo on hover
++        transform: scale(2.2); // Slightly enlarges the logo on hover
+     }
+ `;
+ 
+@@ -69,11 +72,11 @@
+ `;
+ 
+ const Header = () => {
+-    const [isMenuOpen, setIsMenuOpen] = useState(false);
++    //const [isMenuOpen, setIsMenuOpen] = useState(false);
+ 
+     return (
+         <HeaderContainer>
+-            <Logo src="/logo.jpg" alt="Logo" />
++            <Logo src="/logo.png" alt="Logo" />
+             <nav>
+                  <NavList>
+                     <NavItem><Link href="/">Home</Link></NavItem>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4992a183-2bb2-4937-b7e4-ab0dc619a833\" name=\"Changes\" comment=\"commit\">\r\n      <change afterPath=\"$PROJECT_DIR$/components/Sidenavbar.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;pusparajupadhayay&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/pusparajupadhayay/Digi-Service.git&quot;,\r\n    &quot;accountId&quot;: &quot;0dc69dd8-1578-4346-bc62-5abd68c03553&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 6\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ptZRZsINNvdgui4BGJvQzl5Xl4\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;ts.external.directory.path&quot;: &quot;C:\\\\Program Files\\\\JetBrains\\\\WebStorm 2024.3\\\\plugins\\\\javascript-plugin\\\\jsLanguageServicesImpl\\\\external&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4992a183-2bb2-4937-b7e4-ab0dc619a833\" name=\"Changes\" comment=\"\" />\r\n      <created>1733587327611</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1733587327611</updated>\r\n      <workItem from=\"1733587329078\" duration=\"4000\" />\r\n      <workItem from=\"1733587739460\" duration=\"7926000\" />\r\n      <workItem from=\"1733671305709\" duration=\"1691000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733588549876</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733588549876</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733589215683</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733589215683</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733589365694</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733589365694</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733623084452</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733623084452</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733669825988</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733669825988</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733670368791</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733670368791</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733670420331</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733670420331</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733670434389</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733670434389</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733671632801</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733671632801</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733671753435</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733671753435</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733672678979</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733672678979</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"12\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"commit\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commit\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 00940a89299bb3620873184e6ee91ad1211af205)
++++ b/.idea/workspace.xml	(date 1733674807517)
+@@ -5,8 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="4992a183-2bb2-4937-b7e4-ab0dc619a833" name="Changes" comment="commit">
+-      <change afterPath="$PROJECT_DIR$/components/Sidenavbar.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/header.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -74,7 +74,7 @@
+       <updated>1733587327611</updated>
+       <workItem from="1733587329078" duration="4000" />
+       <workItem from="1733587739460" duration="7926000" />
+-      <workItem from="1733671305709" duration="1691000" />
++      <workItem from="1733671305709" duration="3441000" />
+     </task>
+     <task id="LOCAL-00001" summary="commit">
+       <option name="closed" value="true" />
+@@ -164,11 +164,30 @@
+       <option name="project" value="LOCAL" />
+       <updated>1733672678979</updated>
+     </task>
+-    <option name="localTasksCounter" value="12" />
++    <task id="LOCAL-00012" summary="commit">
++      <option name="closed" value="true" />
++      <created>1733673199639</created>
++      <option name="number" value="00012" />
++      <option name="presentableId" value="LOCAL-00012" />
++      <option name="project" value="LOCAL" />
++      <updated>1733673199639</updated>
++    </task>
++    <option name="localTasksCounter" value="13" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="commit" />
