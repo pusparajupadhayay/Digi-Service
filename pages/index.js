@@ -1,22 +1,30 @@
 // pages/index.js
 import React, { useEffect, useState } from 'react';
-//import { fetchData } from '../lib/api';
-import Header from '../components/Header';
+import Header from '../components/Header'; // Importing Header with PascalCase
 
 const Home = () => {
-  const [data, setData] = useState(null);
+    const [data, setData] = useState(null);
 
+    // Optional: You can add a useEffect here if you want to fetch data on component mount
+    useEffect(() => {
+        // Placeholder for data fetching logic
+        // fetchData().then(response => {
+        //   setData(response);
+        // });
 
+        // Example data for demonstration purposes:
+        setData({ message: "This is a sample message from useEffect." });
+    }, []);
 
-  return (
-    <div>
-      <Header />
-      <main>
-        <h2>Welcome to the homepage!</h2>
-        {data && <p>{data.message}</p>}
-      </main>
-    </div>
-  );
+    return (
+        <div>
+            <Header /> {/* Adding the Header component */}
+            <main>
+                <h2>Welcome to the homepage!</h2>
+                {data && <p>{data.message}</p>}
+            </main>
+        </div>
+    );
 };
 
 export default Home;
