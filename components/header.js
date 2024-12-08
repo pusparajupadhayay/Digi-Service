@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { useState } from 'react';
 import Link from 'next/link';
-import logo from './logo.jpg';
+
 
 
 
@@ -73,7 +73,7 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-            <Logo src={logo} alt="Logo" />
+           <Logo src="/logo.jpg" alt="Logo" />
             <nav>
                 <NavToggle onClick={() => setIsMenuOpen((prev) => !prev)}>☰</NavToggle>
                 <NavList isMenuOpen={isMenuOpen}>
