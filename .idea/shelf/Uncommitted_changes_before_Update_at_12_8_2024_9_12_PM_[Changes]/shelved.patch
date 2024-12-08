@@ -1,0 +1,389 @@
+Index: pages/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// pages/index.js\r\nimport React, { useEffect, useState } from 'react';\r\nimport Header from '../components/Header'; // Importing Header with PascalCase\r\n\r\nconst Home = () => {\r\n    const [data, setData] = useState(null);\r\n\r\n    // Optional: You can add a useEffect here if you want to fetch data on component mount\r\n    useEffect(() => {\r\n        // Placeholder for data fetching logic\r\n        // fetchData().then(response => {\r\n        //   setData(response);\r\n        // });\r\n\r\n        // Example data for demonstration purposes:\r\n        setData({ message: \"This is a sample message from useEffect.\" });\r\n    }, []);\r\n\r\n    return (\r\n        <div>\r\n            <Header /> {/* Adding the Header component */}\r\n            <main>\r\n                <h2>Welcome to the homepage!</h2>\r\n                {data && <p>{data.message}</p>}\r\n            </main>\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default Home;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/index.js b/pages/index.js
+--- a/pages/index.js	(revision 0305ae19099993d11892f8057315aef669912ba3)
++++ b/pages/index.js	(date 1733670467097)
+@@ -1,30 +1,28 @@
+ // pages/index.js
+ import React, { useEffect, useState } from 'react';
+-import Header from '../components/Header'; // Importing Header with PascalCase
++//import { fetchData } from '../lib/api';
++import Header from '../components/Header';
+ 
+ const Home = () => {
+-    const [data, setData] = useState(null);
++  const [data, setData] = useState(null);
+ 
+-    // Optional: You can add a useEffect here if you want to fetch data on component mount
+-    useEffect(() => {
+-        // Placeholder for data fetching logic
+-        // fetchData().then(response => {
+-        //   setData(response);
+-        // });
+-
+-        // Example data for demonstration purposes:
+-        setData({ message: "This is a sample message from useEffect." });
+-    }, []);
++  useEffect(() => {
++    const getData = async () => {
++      const result = await fetchData('home-data');
++      setData(result);
++    };
++    getData();
++  }, []);
+ 
+-    return (
+-        <div>
+-            <Header /> {/* Adding the Header component */}
+-            <main>
+-                <h2>Welcome to the homepage!</h2>
+-                {data && <p>{data.message}</p>}
+-            </main>
+-        </div>
+-    );
++  return (
++    <div>
++      <Header />
++      <main>
++        <h2>Welcome to the homepage!</h2>
++        {data && <p>{data.message}</p>}
++      </main>
++    </div>
++  );
+ };
+ 
+ export default Home;
+Index: components/header.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import styled, { css } from 'styled-components';\r\nimport { useState } from 'react';\r\nimport Link from 'next/link';\r\nimport logo from './logo.jpg';\r\n\r\n\r\n\r\n\r\nconst HeaderContainer = styled.header`\r\n    background-color: #ce181e;\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n`;\r\n\r\nconst NavList = styled.ul`\r\n    display: flex;\r\n    justify-content: space-between;\r\n    list-style: none;\r\n    padding: 0;\r\n    margin: 0;\r\n\r\n    @media (max-width: 768px) {\r\n        flex-direction: column;\r\n        align-items: center;\r\n        display: none; // Default to not showing the menu on mobile\r\n        ${(props) =>\r\n                props.isMenuOpen &&\r\n                css`\r\n                    display: flex; // Display the menu when it's open\r\n                `}\r\n    }\r\n`;\r\n\r\nconst NavItem = styled.li`\r\n    margin: 0 10px;\r\n\r\n    a {\r\n        color: #fff;\r\n        text-decoration: none;\r\n        font-size: 18px;\r\n    }\r\n\r\n    a:hover {\r\n        text-decoration: underline;\r\n    }\r\n`;\r\n\r\nconst Logo = styled.img`\r\n    width: 100px;\r\n    height: auto;\r\n    transition: transform 0.3s ease;\r\n\r\n    &:hover {\r\n        transform: scale(1.1); // Slightly enlarges the logo on hover\r\n    }\r\n`;\r\n\r\n\r\n\r\n\r\nconst NavToggle = styled.button`\r\n    display: none;\r\n    font-size: 24px;\r\n    cursor: pointer;\r\n\r\n    @media (max-width: 768px) {\r\n        display: block;\r\n    }\r\n`;\r\n\r\nconst Header = () => {\r\n    const [isMenuOpen, setIsMenuOpen] = useState(false);\r\n\r\n    return (\r\n        <HeaderContainer>\r\n            <Logo src={logo} alt=\"Logo\" />\r\n            <nav>\r\n                <NavToggle onClick={() => setIsMenuOpen((prev) => !prev)}>☰</NavToggle>\r\n                <NavList isMenuOpen={isMenuOpen}>\r\n                    <NavItem><Link href=\"/\">Home</Link></NavItem>\r\n                    {/* Add more NavItem components as needed */}\r\n                </NavList>\r\n            </nav>\r\n        </HeaderContainer>\r\n    );\r\n};\r\n\r\nexport default Header;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/header.js b/components/header.js
+--- a/components/header.js	(revision 0305ae19099993d11892f8057315aef669912ba3)
++++ b/components/header.js	(date 1733670470135)
+@@ -1,7 +1,7 @@
+ import styled, { css } from 'styled-components';
+ import { useState } from 'react';
+ import Link from 'next/link';
+-import logo from './logo.jpg';
++import logo from '../public/logo.jpg';
+ 
+ 
+ 
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"nextjs-project\",\r\n  \"version\": \"1.0.0\",\r\n  \"description\": \"Next Js Project v1\",\r\n  \"main\": \"index.js\",\r\n  \"scripts\": {\r\n    \"dev\": \"next dev\",\r\n    \"build\": \"next build\",\r\n    \"start\": \"next start\",\r\n    \"lint\": \"next lint\"\r\n  },\r\n  \"dependencies\": {\r\n    \"@reduxjs/toolkit\": \"^2.4.0\",\r\n    \"next\": \"^15.0.4\",\r\n    \"react\": \"^18.0.0\",\r\n    \"react-dom\": \"^18.0.0\",\r\n    \"react-redux\": \"^9.1.2\",\r\n    \"styled-components\": \"^6.1.13\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"eslint\": \"^8.0.0\",\r\n    \"eslint-config-next\": \"^13.5.7\"\r\n  },\r\n  \"license\": \"MIT\"\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	(revision 0305ae19099993d11892f8057315aef669912ba3)
++++ b/package.json	(date 1733670470186)
+@@ -11,9 +11,11 @@
+   },
+   "dependencies": {
+     "@reduxjs/toolkit": "^2.4.0",
++    "bootstrap": "^5.3.3",
+     "next": "^15.0.4",
+     "react": "^18.0.0",
+     "react-dom": "^18.0.0",
++    "react-icons": "^5.4.0",
+     "react-redux": "^9.1.2",
+     "styled-components": "^6.1.13"
+   },
+Index: components/Sidenavbar.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/Sidenavbar.js b/components/Sidenavbar.js
+new file mode 100644
+--- /dev/null	(date 1733670473026)
++++ b/components/Sidenavbar.js	(date 1733670473026)
+@@ -0,0 +1,146 @@
++"use client";
++import 'bootstrap/dist/css/bootstrap.min.css';
++import React, { useEffect, useState } from "react";
++import { AiOutlineHome } from "react-icons/ai";
++import { GiHamburgerMenu } from "react-icons/gi";
++import { BsShare } from "react-icons/bs";
++
++const Sidenavbar = () => {
++    const [isOpen, setIsOpen] = useState(false);
++
++    const sideList = [
++        {
++            icon: <AiOutlineHome className="text-2xl" />,
++            title: "item 1",
++        },
++        {
++            icon: <AiOutlineHome className="text-2xl" />,
++            title: "item 2",
++        },
++        {
++            icon: <AiOutlineHome className="text-2xl" />,
++            title: "item 3",
++        },
++        {
++            icon: <AiOutlineHome className="text-2xl" />,
++            title: "item 4",
++        },
++    ];
++
++    const navList = [
++        {
++            icon: <AiOutlineHome className="text-2xl mr-2" />,
++            title: "item",
++        },
++        {
++            icon: <AiOutlineHome className="text-2xl" />,
++            title: "",
++        },
++        {
++            icon: <AiOutlineHome className="text-2xl" />,
++            title: "",
++        },
++    ];
++
++    const handleDrawer = () => {
++        setIsOpen(!isOpen);
++    };
++
++    useEffect(() => {
++        const handleEscKeyPress = (e) => {
++            if (e.keyCode === 27 && isOpen) {
++                setIsOpen(false);
++            }
++        };
++
++        if (isOpen) {
++            document.body.style.setProperty("overflow", "hidden");
++        } else {
++            document.body.style.removeProperty("overflow");
++        }
++
++        document.addEventListener("keydown", handleEscKeyPress);
++
++        return () => {
++            document.removeEventListener("keydown", handleEscKeyPress);
++        };
++    }, [isOpen]);
++
++    return (
++        <nav className="flex  w-full items-center justify-between px-6 h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
++            <div className="flex items-center">
++                <button className="mr-2" aria-label="Open Menu" onClick={handleDrawer}>
++                    <GiHamburgerMenu className="text-3xl" />
++                </button>
++
++                {/* Logo  <img
++                    src=""
++                    alt="Logo"
++                    className="h-auto w-24"
++                /> */}
++            </div>
++
++            <div className="flex items-center">
++                <div className="hidden md:flex md:justify-between md:bg-transparent">
++                    {navList.map(({ icon, title }, index) => {
++                        return (
++                            <button
++                                key={index}
++                                title="Wishlist"
++                                className="flex items-center p-3 font-medium mr-2 text-center bg-gray-300 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
++                            >
++                                <span>{icon}</span>
++                                <span>{title}</span>
++                            </button>
++                        );
++                    })}
++                </div>
++            </div>
++
++            {isOpen && (
++                <div className="z-10 fixed inset-0 transition-opacity">
++                    <div
++                        onClick={() => setIsOpen(false)}
++                        className="absolute inset-0 bg-black opacity-50"
++                        tabIndex="0"
++                    ></div>
++                </div>
++            )}
++
++            <aside
++                className={`transform top-0 left-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
++                    isOpen ? "translate-x-0" : "-translate-x-full"
++                }`}
++            >
++        <span className="flex w-full items-center p-4 border-b">
++           {/* <img
++              src=""
++              alt="Logo"
++              className="h-auto w-32 mx-auto"
++          /> */}
++        </span>
++                {sideList.map(({ icon, title }, index) => {
++                    return (
++                        <span
++                            key={index}
++                            className="flex items-center p-4 hover:bg-pink-500 hover:text-white "
++                        >
++              <span className="mr-2">{icon}</span> <span>{title}</span>
++            </span>
++                    );
++                })}
++                <div className="fixed bottom-0 w-full">
++                    <button className="flex items-center p-4 text-white bg-blue-500 hover:bg-blue-600 w-full">
++            <span className="mr-2">
++              <BsShare className="text-2xl" />
++            </span>
++
++                        <span>Share</span>
++                    </button>
++                </div>
++            </aside>
++        </nav>
++    );
++};
++
++export default Sidenavbar;
+\ No newline at end of file
+Index: components/layout.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// components/Layout.js\r\n\r\nimport Head from 'next/head'; // Optional, for setting the page title dynamically\r\nimport styles from './Layout.module.css'; // You can also create a CSS module for Layout styles\r\n\r\nconst Layout = ({ children, title = \"My App\" }) => {\r\n  return (\r\n    <div className={styles.container}>\r\n      {/* Optional: Use Head to set a custom page title */}\r\n      <Head>\r\n        <title>{title}</title>\r\n      </Head>\r\n\r\n      {/* Header */}\r\n      <header className={styles.header}>\r\n        <h1>My Next.js App</h1>\r\n        <nav>\r\n          <ul>\r\n            <li><a href=\"/\">Home</a></li>\r\n            <li><a href=\"/about\">About</a></li>\r\n            <li><a href=\"/contact\">Contact</a></li>\r\n          </ul>\r\n        </nav>\r\n      </header>\r\n\r\n      {/* Main Content Area */}\r\n      <main className={styles.main}>\r\n        {children} {/* Render child components here */}\r\n      </main>\r\n\r\n      {/* Footer */}\r\n      <footer className={styles.footer}>\r\n        <p>© 2024 My Next.js App. All rights reserved.</p>\r\n      </footer>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Layout;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/layout.js b/components/layout.js
+--- a/components/layout.js	(revision 0305ae19099993d11892f8057315aef669912ba3)
++++ b/components/layout.js	(date 1733670467108)
+@@ -1,7 +1,8 @@
+ // components/Layout.js
+ 
+ import Head from 'next/head'; // Optional, for setting the page title dynamically
+-import styles from './Layout.module.css'; // You can also create a CSS module for Layout styles
++import styles from './Layout.module.css';
++// You can also create a CSS module for Layout styles
+ 
+ const Layout = ({ children, title = "My App" }) => {
+   return (
+@@ -23,6 +24,8 @@
+         </nav>
+       </header>
+ 
++
++
+       {/* Main Content Area */}
+       <main className={styles.main}>
+         {children} {/* Render child components here */}
+Index: components/layout1.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// components/Layout.js\r\nimport Navbar from './Navbar';\r\n\r\nconst Layout = ({ children }) => {\r\n  return (\r\n    <div>\r\n      <Navbar />\r\n      <div className=\"content\">{children}</div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Layout;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/layout1.js b/components/layout1.js
+--- a/components/layout1.js	(revision 0305ae19099993d11892f8057315aef669912ba3)
++++ b/components/layout1.js	(date 1733670467121)
+@@ -1,6 +1,7 @@
+ // components/Layout.js
+ import Navbar from './Navbar';
+ 
++
+ const Layout = ({ children }) => {
+   return (
+     <div>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4992a183-2bb2-4937-b7e4-ab0dc619a833\" name=\"Changes\" comment=\"commit\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 6\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2ptZRZsINNvdgui4BGJvQzl5Xl4\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"ts.external.directory.path\": \"C:\\\\Program Files\\\\JetBrains\\\\WebStorm 2024.3\\\\plugins\\\\javascript-plugin\\\\jsLanguageServicesImpl\\\\external\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4992a183-2bb2-4937-b7e4-ab0dc619a833\" name=\"Changes\" comment=\"\" />\r\n      <created>1733587327611</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1733587327611</updated>\r\n      <workItem from=\"1733587329078\" duration=\"4000\" />\r\n      <workItem from=\"1733587739460\" duration=\"7099000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733588549876</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733588549876</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733589215683</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733589215683</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733589365694</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733589365694</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733623084452</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733623084452</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733669825988</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733669825988</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"commit\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commit\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0305ae19099993d11892f8057315aef669912ba3)
++++ b/.idea/workspace.xml	(date 1733670513629)
+@@ -5,7 +5,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="4992a183-2bb2-4937-b7e4-ab0dc619a833" name="Changes" comment="commit">
++      <change afterPath="$PROJECT_DIR$/components/Sidenavbar.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/header.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/components/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/components/layout1.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout1.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -24,20 +30,20 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "main",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+@@ -54,7 +60,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1733587327611</updated>
+       <workItem from="1733587329078" duration="4000" />
+-      <workItem from="1733587739460" duration="7099000" />
++      <workItem from="1733587739460" duration="6558000" />
+     </task>
+     <task id="LOCAL-00001" summary="commit">
+       <option name="closed" value="true" />
+@@ -88,15 +94,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1733623084452</updated>
+     </task>
+-    <task id="LOCAL-00005" summary="commit">
+-      <option name="closed" value="true" />
+-      <created>1733669825988</created>
+-      <option name="number" value="00005" />
+-      <option name="presentableId" value="LOCAL-00005" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1733669825988</updated>
+-    </task>
+-    <option name="localTasksCounter" value="6" />
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
