@@ -2,14 +2,13 @@ import styled, { css } from 'styled-components';
 import { useState } from 'react';
 import Link from 'next/link';
 
-
-
-
-
 const HeaderContainer = styled.header`
     background-color: #ce181e;
     color: #fff;
     padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const NavList = styled.ul`
@@ -23,8 +22,9 @@ const NavList = styled.ul`
         flex-direction: column;
         align-items: center;
         display: none; // Default to not showing the menu on mobile
+
         ${(props) =>
-                props.isMenuOpen &&
+                props.isOpen &&
                 css`
                     display: flex; // Display the menu when it's open
                 `}
@@ -55,13 +55,13 @@ const Logo = styled.img`
     }
 `;
 
-
-
-
 const NavToggle = styled.button`
     display: none;
     font-size: 24px;
     cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
 
     @media (max-width: 768px) {
         display: block;
@@ -73,12 +73,14 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-           <Logo src="/logo.jpg" alt="Logo" />
+            <Logo src="/logo.jpg" alt="Logo" />
             <nav>
-                <NavToggle onClick={() => setIsMenuOpen((prev) => !prev)}>☰</NavToggle>
-                <NavList isMenuOpen={isMenuOpen}>
+                <NavToggle onClick={() => setIsMenuOpen((prev) => !prev)} aria-label="Toggle navigation menu">☰</NavToggle>
+                <NavList isOpen={isMenuOpen}>
                     <NavItem><Link href="/">Home</Link></NavItem>
-                    {/* Add more NavItem components as needed */}
+                    <NavItem><Link href="/about">About</Link></NavItem>
+                    <NavItem><Link href="/services">Services</Link></NavItem>
+                    <NavItem><Link href="/contact">Contact</Link></NavItem>
                 </NavList>
             </nav>
         </HeaderContainer>
