@@ -1,0 +1,61 @@
+/* Sidebar.module.css */
+
+/* Sidebar container */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: -250px; /* Initially off-screen */
+    width: 250px;
+    height: 100%;
+    background-color: #ce181e;
+    color: red;
+    transition: left 0.3s ease;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Sidebar open state */
+.sidebar.open {
+    left: 0; /* Move the sidebar into view */
+}
+
+/* Toggle button for opening/closing the sidebar */
+.toggleButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #444;
+    color: red;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Navigation styling */
+.nav {
+    margin-top: 60px; /* Ensure space for the toggle button */
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.nav li {
+    padding: 15px;
+    text-align: center;
+}
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+/* Hover effect for links */
+.nav li a:hover {
+    background-color: #575757;
+    text-decoration: underline;
+}
