@@ -1,0 +1,12 @@
+/* styles/globals.css */
+
+
+
+/* Set default font and line-height */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
