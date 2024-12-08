@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header'; // Importing Header with PascalCase
 import Sidenavbar from "../components/Sidenavbar";
 
+import Footer from '../components/Footer';
+
 const Home = () => {
     const [data, setData] = useState(null);
 
@@ -21,10 +23,11 @@ const Home = () => {
         <div>
             <Header /> {/* Adding the Header component */}
             <main>
-                <h2>Welcome to the homepage!</h2>
-                {data && <p>{data.message}</p>}
+
             </main>
+            <Footer/>
         </div>
+
     );
 };
 
