@@ -20,7 +20,6 @@ const Home = () => {
     return (
         <div>
             <Header /> {/* Adding the Header component */}
-            <Sidenavbar />
             <main>
                 <h2>Welcome to the homepage!</h2>
                 {data && <p>{data.message}</p>}

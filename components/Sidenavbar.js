@@ -1,11 +1,12 @@
+// components/Sidenavbar.js
 import React, { useState } from 'react';
-import styles from './Sidebar.module.css';
+import styles from '../styles/Sidebar.module.css'; // Import the CSS module
 
 const Sidenavbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     const toggleSidebar = () => {
-        setIsOpen(!isOpen);
+        setIsOpen(!isOpen); // Toggle the sidebar open/closed
     };
 
     return (
@@ -16,6 +17,7 @@ const Sidenavbar = () => {
             <nav className={styles.nav}>
                 <ul>
                     <li><a href="/Product">Product</a></li>
+                    <li><a href="/Services">Services</a></li>
                 </ul>
             </nav>
         </div>
@@ -23,3 +25,4 @@ const Sidenavbar = () => {
 };
 
 export default Sidenavbar;
+
