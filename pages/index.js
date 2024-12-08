@@ -1,6 +1,7 @@
 // pages/index.js
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header'; // Importing Header with PascalCase
+import Sidenavbar from "../components/Sidenavbar";
 
 const Home = () => {
     const [data, setData] = useState(null);
@@ -19,6 +20,7 @@ const Home = () => {
     return (
         <div>
             <Header /> {/* Adding the Header component */}
+            <Sidenavbar />
             <main>
                 <h2>Welcome to the homepage!</h2>
                 {data && <p>{data.message}</p>}
