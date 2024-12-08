@@ -47,7 +47,7 @@ const NavItem = styled.li`
 
 const Logo = styled.img`
     width: 100px;
-    height: auto;
+    height: 50Px;
     transition: transform 0.3s ease;
 
     &:hover {
@@ -75,12 +75,10 @@ const Header = () => {
         <HeaderContainer>
             <Logo src="/logo.jpg" alt="Logo" />
             <nav>
-                <NavToggle onClick={() => setIsMenuOpen((prev) => !prev)} aria-label="Toggle navigation menu">☰</NavToggle>
-                <NavList isOpen={isMenuOpen}>
+                 <NavList>
                     <NavItem><Link href="/">Home</Link></NavItem>
-                    <NavItem><Link href="/about">About</Link></NavItem>
-                    <NavItem><Link href="/services">Services</Link></NavItem>
-                    <NavItem><Link href="/contact">Contact</Link></NavItem>
+                    <NavItem><Link href="/product">Product</Link></NavItem>
+
                 </NavList>
             </nav>
         </HeaderContainer>
