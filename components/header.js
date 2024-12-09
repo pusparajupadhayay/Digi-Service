@@ -6,13 +6,22 @@ const HeaderContainer = styled.header`
     background-color: #ce181e;
     color: #fff;
     padding-top: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
     padding-left: 10px;
-    padding-right: 200px;
+    padding-right: 300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: -10px -10px -1px -10px;
+    margin: 0; /* Removed margins */
+    position: fixed; /* Makes the header fixed */
+    top: 0; /* Stays at the top */
+    left: 0; /* Stretches to the left */
+    right: 0; /* Stretches to the right */
+    z-index: 1000; /* Ensures it is on top */
+`;
+
+const MainContent = styled.main`
+    padding-top: 60px; /* Adjust based on the header height */
 `;
 
 const NavList = styled.ul`
@@ -56,6 +65,13 @@ const Logo = styled.img`
     }
 `;
 
+const NavImage = styled.img`
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+`;
+
 const NavToggle = styled.button`
     display: none;
     font-size: 24px;
@@ -70,25 +86,30 @@ const NavToggle = styled.button`
 `;
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // Initially set to false for a hidden menu
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
     return (
-        <HeaderContainer>
-            <Logo src="/logo.png" alt="Logo" />
-            <NavToggle onClick={toggleMenu}>
-                ☰
-            </NavToggle>
-            <nav>
-                <NavList isMenuOpen={isMenuOpen}>
-                    <NavItem><Link href="/">Home</Link></NavItem>
-                    <NavItem><Link href="/product">Product</Link></NavItem>
-                </NavList>
-            </nav>
-        </HeaderContainer>
+        <>
+            <HeaderContainer>
+                <Logo src="/logo.png" alt="Logo" />
+                <NavToggle onClick={toggleMenu} aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}>
+                    ☰
+                </NavToggle>
+                <nav>
+                    <NavList isMenuOpen={isMenuOpen}>
+                        <NavItem><Link href="/"><NavImage src="/home.png" alt="Home" />Home</Link></NavItem>
+                        <NavItem><Link href="/product"><NavImage src="/box.png" alt="Product" />Product</Link></NavItem>
+                    </NavList>
+                </nav>
+            </HeaderContainer>
+            <MainContent>
+                {/* Your main content here */}
+            </MainContent>
+        </>
     );
 };
 

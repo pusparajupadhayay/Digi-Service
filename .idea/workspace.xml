@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4992a183-2bb2-4937-b7e4-ab0dc619a833" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/components/Sidebar.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Sidenavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Sidenavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Sidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Sidebar.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,13 +178,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/Sidenavbar.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/Sidenavbar.js</url>
           <line>1</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

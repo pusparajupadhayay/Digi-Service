@@ -21,7 +21,7 @@ const Home = () => {
 
     return (
         <div>
-            <Header /> {/* Adding the Header component */}
+           <Header /> {/* Adding the Header component */}
             <main>
 
             </main>
