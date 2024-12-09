@@ -4,14 +4,23 @@ import { store } from '../store/store';
 import '../styles/globals.css';
 import React from "react";
 import Sidenavbar from "../components/Sidenavbar";
+import Header from "../components/header";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
+      <Provider store={store}>
 
-        <Sidenavbar />  {/* Sidebar component is used here */}
-      <Component {...pageProps} />
-    </Provider>
+          <div>
+              <Header/> {/* Adding the Header component */}
+              <Sidenavbar />
+              <main>
+                  <Component {...pageProps} />
+              </main>
+
+          </div>
+
+
+      </Provider>
   );
 }
 

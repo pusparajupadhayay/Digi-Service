@@ -1,9 +1,9 @@
 // pages/index.js
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header'; // Importing Header with PascalCase
-import Sidenavbar from "../components/Sidenavbar";
 
-import Footer from '../components/Footer';
+
+
+
 
 const Home = () => {
     const [data, setData] = useState(null);
@@ -21,11 +21,11 @@ const Home = () => {
 
     return (
         <div>
-           <Header /> {/* Adding the Header component */}
+
             <main>
 
             </main>
-            <Footer/>
+
         </div>
 
     );
