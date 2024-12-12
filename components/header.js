@@ -102,7 +102,7 @@ const Header = () => {
                 <nav>
                     <NavList isMenuOpen={isMenuOpen}>
                         <NavItem><Link href="/"><NavImage src="/home.png" alt="Home" />Home</Link></NavItem>
-                        <NavItem><Link href="/product"><NavImage src="/box.png" alt="Product" />Product</Link></NavItem>
+                        <NavItem><Link href="/pages/Product"><NavImage src="/box.png" alt="Product" />Product</Link></NavItem>
                     </NavList>
                 </nav>
             </HeaderContainer>

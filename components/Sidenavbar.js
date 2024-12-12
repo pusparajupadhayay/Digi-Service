@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/Sidebar.module.css';
 import Image from "next/image";
+import Product from "../pages/Product"
 
 const Sidenavbar = () => {
     const [isOpen, setIsOpen] = useState(true);
