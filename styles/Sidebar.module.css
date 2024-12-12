@@ -50,12 +50,12 @@
 .nav li a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 13px;
     display: block;
 }
 
+
 /* Hover effect for links */
 .nav li a:hover {
-    background-color: #575757;
-    text-decoration: underline;
+    background-color: red;
 }

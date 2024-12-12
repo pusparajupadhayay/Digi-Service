@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }) {
           <div>
               <Header/> {/* Adding the Header component */}
               <Sidenavbar />
+
               <main>
                   <Component {...pageProps} />
               </main>
