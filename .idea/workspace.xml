@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4992a183-2bb2-4937-b7e4-ab0dc619a833" name="Changes" comment="commit" />
+    <list default="true" id="4992a183-2bb2-4937-b7e4-ab0dc619a833" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,12 +35,12 @@
     &quot;assignee&quot;: &quot;pusparajupadhayay&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/pusparajupadhayay/Digi-Service.git",
-    "accountId": "9707e91c-651c-4c4b-aad9-f058eaa28afe"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/pusparajupadhayay/Digi-Service.git&quot;,
+    &quot;accountId&quot;: &quot;0dc69dd8-1578-4346-bc62-5abd68c03553&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -86,6 +89,8 @@
       <workItem from="1733587739460" duration="7926000" />
       <workItem from="1733671305709" duration="1691000" />
       <workItem from="1733895339297" duration="2600000" />
+      <workItem from="1733928061586" duration="2062000" />
+      <workItem from="1734016937107" duration="1215000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
