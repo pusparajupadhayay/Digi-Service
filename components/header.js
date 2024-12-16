@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Import useState for state management
 import Link from 'next/link';
 
 const HeaderContainer = styled.header`
@@ -12,16 +12,18 @@ const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0; /* Removed margins */
-    position: fixed; /* Makes the header fixed */
-    top: 0; /* Stays at the top */
-    left: 0; /* Stretches to the left */
-    right: 0; /* Stretches to the right */
-    z-index: 1000; /* Ensures it is on top */
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
 `;
 
 const MainContent = styled.main`
-    padding-top: 60px; /* Adjust based on the header height */
+    padding-top: 80px;
 `;
 
 const NavList = styled.ul`
@@ -35,9 +37,11 @@ const NavList = styled.ul`
         flex-direction: column;
         align-items: center;
         display: none;
-        ${({ isMenuOpen }) => isMenuOpen && css`
-            display: flex;
-        `}
+        ${({ $isMenuOpen }) =>
+                $isMenuOpen &&
+                css`
+                    display: flex;
+                `}
     }
 `;
 
@@ -86,23 +90,32 @@ const NavToggle = styled.button`
 `;
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // Initially set to false for a hidden menu
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    // Toggle the menu visibility when the button is clicked
+    const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
     return (
         <>
             <HeaderContainer>
                 <Logo src="/logo.png" alt="Logo" />
-                <NavToggle onClick={toggleMenu} aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}>
-                    ☰
-                </NavToggle>
+
                 <nav>
-                    <NavList isMenuOpen={isMenuOpen}>
-                        <NavItem><Link href="/"><NavImage src="/home.png" alt="Home" />Home</Link></NavItem>
-                        <NavItem><Link href="/pages/Product"><NavImage src="/box.png" alt="Product" />Product</Link></NavItem>
+                    <NavToggle onClick={toggleMenu}>☰</NavToggle> {/* Menu toggle button */}
+
+                    <NavList $isMenuOpen={isMenuOpen}>
+                        <NavItem>
+                            <Link href="/">
+                                <NavImage src="/home.png" alt="Home" />
+                                Home
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link href="/">
+                                <NavImage src="/box.png" alt="Product" />
+                                Product
+                            </Link>
+                        </NavItem>
                     </NavList>
                 </nav>
             </HeaderContainer>
