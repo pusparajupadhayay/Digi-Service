@@ -21,7 +21,7 @@ const Home = () => {
     return (
         <div>
             <main>
-                <section id="features" className="container mx-auto px-4 space-y-6 bg-slate-50 py-8 md:py-12 lg:py-20">
+                <section id="features" className="container mx-auto px-4 space-y-6 bg-slate-50 py-8 md:py-12 lg:py-1">
                     <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
                         <h2 className="font-bold text-lg leading-[1.1] sm:text-lg md:text-lg">
                             Prabhu Bank Services

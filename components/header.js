@@ -1,129 +1,51 @@
-import styled, { css } from 'styled-components';
-import { useState, useEffect } from 'react'; // Import useState for state management
-import Link from 'next/link';
-
-const HeaderContainer = styled.header`
-    background-color: #ce181e;
-    color: #fff;
-    padding-top: 12px;
-    padding-bottom: 15px;
-    padding-left: 10px;
-    padding-right: 300px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    width: 100%;
-    box-sizing: border-box;
-`;
-
-const MainContent = styled.main`
-    padding-top: 80px;
-`;
-
-const NavList = styled.ul`
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        align-items: center;
-        display: none;
-        ${({ $isMenuOpen }) =>
-                $isMenuOpen &&
-                css`
-                    display: flex;
-                `}
-    }
-`;
-
-const NavItem = styled.li`
-    margin: 0 10px;
-
-    a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 18px;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-`;
-
-const Logo = styled.img`
-    width: 200px;
-    height: 40px;
-    transition: transform 0.5s ease;
-
-    &:hover {
-        transform: scale(2.2);
-    }
-`;
-
-const NavImage = styled.img`
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    vertical-align: middle;
-`;
-
-const NavToggle = styled.button`
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: #fff;
-
-    @media (max-width: 768px) {
-        display: block;
-    }
-`;
+import React, { useState } from 'react';
+import styles from '../styles/header.module.css';  // Import the CSS Module
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    // Toggle the menu visibility when the button is clicked
-    const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
-        <>
-            <HeaderContainer>
-                <Logo src="/logo.png" alt="Logo" />
+        <header className={styles.headerContainer}>
+            <img src="/logo.png" alt="Logo" className={styles.logo} />
+            <button className={styles.navToggle} onClick={toggleMenu}>
+                ☰
+            </button>
+            <ul className={`${styles.navList} ${isMenuOpen ? styles.active : ''}`}>
 
-                <nav>
-                    <NavToggle onClick={toggleMenu}>☰</NavToggle> {/* Menu toggle button */}
+                <li className={styles.navItem}><a href="/"><img src="/home.png" alt="Home"
+                                                                style={{width: '20px', marginRight: '8px',display:'inline-block'}}/> Home</a>
+                </li>
 
-                    <NavList $isMenuOpen={isMenuOpen}>
-                        <NavItem>
-                            <Link href="/">
-                                <NavImage src="/home.png" alt="Home" />
-                                Home
-                            </Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link href="/">
-                                <NavImage src="/box.png" alt="Product" />
-                                Product
-                            </Link>
-                        </NavItem>
-                    </NavList>
-                </nav>
-            </HeaderContainer>
-            <MainContent>
-                {/* Your main content here */}
-            </MainContent>
-        </>
+                <li className={styles.navItem}><a href="/Services"><img src="/box.png" alt="Home"
+                                                                style={{
+                                                                    width: '20px',
+                                                                    marginRight: '8px',
+                                                                    display: 'inline-block'
+                                                                }}/> Services</a></li>
+                <li className={styles.navItem}><a href="/Services"><img src="/contact.svg" alt="Home"
+                                                                        style={{
+                                                                            width: '20px',
+                                                                            marginRight: '8px',
+                                                                            display: 'inline-block'
+                                                                        }}/> Contact</a></li>
+            </ul>
+        </header>
     );
 };
 
-export default Header;
+const App = () => {
+    return (
+        <div>
+            <Header/>
+            <main className={styles.mainContent}>
+                {/* Main content goes here */}
+            </main>
+        </div>
+    );
+};
+
+export default App;
